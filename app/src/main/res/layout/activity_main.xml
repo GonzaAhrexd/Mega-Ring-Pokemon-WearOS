@@ -10,10 +10,15 @@
         android:id="@+id/mega_button"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/mega_evolution_icon"
+        android:src="@drawable/icon_mega512"
         android:contentDescription="Símbolo de la Mega Evolución"
         android:clickable="true"
         android:focusable="true"
-        android:scaleType="centerCrop"/> <!-- Esto asegura que la imagen se recorte y llene el ImageView -->
+        android:scaleType="centerCrop"
+        android:scaleX="1.15"
+    android:scaleY="1.15" />
+
+
+        /> <!-- Esto asegura que la imagen se recorte y llene el ImageView -->
 
 </LinearLayout>

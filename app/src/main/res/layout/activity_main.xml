@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/root_layout"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/mega_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/mega_evolution_icon"
+        android:contentDescription="Símbolo de la Mega Evolución"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="centerCrop"/> <!-- Esto asegura que la imagen se recorte y llene el ImageView -->
+
+</LinearLayout>

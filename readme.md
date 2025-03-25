@@ -35,8 +35,9 @@
    - Using Wear Installer and Wireless debugging, you can send the apk to your Watch. 
    - Enjoy!
 
-## 📸 Demo
-[Demo](https://youtube.com/shorts/SixpyW4nV44?si=3udaOmiUHoZW3--4)
+## 🎥 Demo  
+
+[![Watch the demo](https://img.youtube.com/vi/SixpyW4nV44/maxresdefault.jpg)](https://youtube.com/shorts/SixpyW4nV44)
 
 
 ## 💡 Contributing

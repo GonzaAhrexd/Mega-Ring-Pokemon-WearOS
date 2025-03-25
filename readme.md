@@ -36,7 +36,7 @@
    - Enjoy!
 
 ## 📸 Demo
-https://youtube.com/shorts/SixpyW4nV44?si=3udaOmiUHoZW3--4 
+![Demo](https://youtube.com/shorts/SixpyW4nV44?si=3udaOmiUHoZW3--4)
 
 
 ## 💡 Contributing

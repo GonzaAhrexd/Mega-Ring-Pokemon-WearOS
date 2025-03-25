@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.animation.ScaleAnimation
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -14,6 +15,7 @@ import androidx.core.content.ContextCompat
 import android.view.animation.AlphaAnimation
 import android.os.Handler
 import android.animation.ValueAnimator
+
 class MainActivity : AppCompatActivity() {
 
     private var mediaPlayer: MediaPlayer? = null
@@ -40,50 +42,59 @@ class MainActivity : AppCompatActivity() {
         lightningEffect.alpha = 0f // Inicialmente invisible
         rootLayout.addView(lightningEffect)
 
-        // Configura el clic en la imagen
-        megaButton.setOnClickListener {
-            // Reproducir el sonido
-            mediaPlayer?.start()
+        // Configura el touch listener en la imagen para activar el evento al mantener presionado
+        megaButton.setOnTouchListener { view, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    // Cuando el usuario empieza a presionar
+                    // Reproducir el sonido
+                    mediaPlayer?.start()
 
-            // Animación de escala (para dar un efecto visual en la imagen)
-            val scaleAnimation = ScaleAnimation(
-                1f, 0.9f,  // Escala de 1 a 0.9 (reducción)
-                1f, 0.9f,  // Escala de 1 a 0.9 (reducción)
-                android.view.animation.Animation.RELATIVE_TO_SELF, 0.5f,
-                android.view.animation.Animation.RELATIVE_TO_SELF, 0.5f
-            )
-            scaleAnimation.duration = 300  // Duración de la animación en milisegundos
-            scaleAnimation.repeatCount = 1  // Número de repeticiones
-            scaleAnimation.repeatMode = android.view.animation.Animation.REVERSE  // Reverso al final de la animación
-            megaButton.startAnimation(scaleAnimation)
+                    // Animación de escala (para dar un efecto visual en la imagen)
+                    val scaleAnimation = ScaleAnimation(
+                        1f, 1.15f,  // Escala de 1 a 1.15 (aumento)
+                        1f, 1.15f,  // Escala de 1 a 1.15 (aumento)
+                        android.view.animation.Animation.RELATIVE_TO_SELF, 0.5f,
+                        android.view.animation.Animation.RELATIVE_TO_SELF, 0.5f
+                    )
+                    scaleAnimation.duration = 300  // Duración de la animación en milisegundos
+                    scaleAnimation.repeatCount = 0  // Solo se realiza una vez
+                    megaButton.startAnimation(scaleAnimation)
 
-            // Cambiar el color de la imagen a morado rosado gradualmente
-            val colorAnimator = ValueAnimator.ofArgb(Color.TRANSPARENT, Color.parseColor("#D500F9")) // De transparente a morado rosado
-            colorAnimator.duration = 3000 // Transición gradual de 3 segundos
-            colorAnimator.addUpdateListener { animator ->
-                val color = animator.animatedValue as Int
-                megaButton.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
-            }
-            colorAnimator.start()
+                    // Cambiar el color de la imagen a morado rosado gradualmente
+                    val colorAnimator = ValueAnimator.ofArgb(Color.TRANSPARENT, Color.parseColor("#D500F9")) // De transparente a morado rosado
+                    colorAnimator.duration = 3000 // Transición gradual de 3 segundos
+                    colorAnimator.addUpdateListener { animator ->
+                        val color = animator.animatedValue as Int
+                        megaButton.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
+                    }
+                    colorAnimator.start()
 
-            // Efecto de rayo (animación de parpadeo)
-            val lightningAnimation = AlphaAnimation(0f, 1f) // Transición de invisible a visible
-            lightningAnimation.duration = 300 // Duración de un parpadeo
-            lightningAnimation.repeatMode = AlphaAnimation.REVERSE
-            lightningAnimation.repeatCount = 1
-            lightningEffect.startAnimation(lightningAnimation)
+                    // Efecto de rayo (animación de parpadeo)
+                    val lightningAnimation = AlphaAnimation(0f, 1f) // Transición de invisible a visible
+                    lightningAnimation.duration = 300 // Duración de un parpadeo
+                    lightningAnimation.repeatMode = AlphaAnimation.REVERSE
+                    lightningAnimation.repeatCount = 1
+                    lightningEffect.startAnimation(lightningAnimation)
 
-            // Mantener el color morado rosado durante 5 segundos
-            Handler().postDelayed({
-                // Restaurar el color original de la imagen
-                val resetAnimator = ValueAnimator.ofArgb(Color.parseColor("#D500F9"), Color.TRANSPARENT)
-                resetAnimator.duration = 2000 // 2 segundos para restaurar el color
-                resetAnimator.addUpdateListener { valueAnimator ->
-                    val color = valueAnimator.animatedValue as Int
-                    megaButton.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
+                    true
                 }
-                resetAnimator.start()
-            }, 5000) // Mantener el color por 5 segundos antes de restaurarlo
+                MotionEvent.ACTION_UP -> {
+                    // Cuando el usuario deja de presionar, mantener el color morado rosado durante 5 segundos
+                    Handler().postDelayed({
+                        // Restaurar el color original de la imagen
+                        val resetAnimator = ValueAnimator.ofArgb(Color.parseColor("#D500F9"), Color.TRANSPARENT)
+                        resetAnimator.duration = 2000 // 2 segundos para restaurar el color
+                        resetAnimator.addUpdateListener { valueAnimator ->
+                            val color = valueAnimator.animatedValue as Int
+                            megaButton.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
+                        }
+                        resetAnimator.start()
+                    }, 5000) // Mantener el color por 5 segundos antes de restaurarlo
+                    true
+                }
+                else -> false
+            }
         }
     }
 

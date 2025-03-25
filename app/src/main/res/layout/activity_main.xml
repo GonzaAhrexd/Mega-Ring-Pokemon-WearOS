@@ -10,7 +10,7 @@
         android:id="@+id/mega_button"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/icon_mega512"
+        android:src="@drawable/mega_evol_2"
         android:contentDescription="Símbolo de la Mega Evolución"
         android:clickable="true"
         android:focusable="true"

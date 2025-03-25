@@ -1,9 +1,9 @@
-# Mega Ring - Pokémon Inspired App
+# Mega Ring - Pokémon Inspired App for Wear OS
 
 ![Mega Evolution Icon](https://cdn.discordapp.com/attachments/212771965394485248/1353864951512694814/icon_mega.png?ex=67e3dd3e&is=67e28bbe&hm=8c8c853ce7239653c8a621c0585a512447a7b64f6e1fce7ed5152cfb8ee55fa4&)
 
 ## 📌 Overview
-**Mega Ring** is an Android application inspired by the **Mega Evolution** mechanic in Pokémon. This app provides an interactive experience where users can trigger a **Mega Evolution effect** by long-pressing the central button. The animation, sound, and visual effects recreate the epic moment of transformation!
+**Mega Ring** is a Wear OS application inspired by the **Mega Evolution** mechanic in Pokémon. This app provides an interactive experience where users can trigger a **Mega Evolution effect** by long-pressing the central button. The animation, sound, and visual effects recreate the epic moment of transformation!
 
 ## 🎮 Features
 - 🔘 **Hold to Activate**: The Mega Evolution effect only activates when you hold or press the button, adding an immersive experience.
